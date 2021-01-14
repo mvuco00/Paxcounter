@@ -28,6 +28,11 @@
 #define MY_DISPLAY_SCL (22)
 #define MY_DISPLAY_RST NOT_A_PIN
 
+// BME680 sensor on I2C bus
+#define HAS_BME 1 // Enable BME sensors in general
+#define HAS_BME680 GPIO_NUM_21, GPIO_NUM_22 // SDA, SCL
+#define BME680_ADDR BME680_I2C_ADDR_PRIMARY // connect SDIO of BME680 to GND
+
 // Pins for LORA chip SPI interface, reset line and interrupt lines
 #define LORA_SCK  (5) 
 #define LORA_CS   (18)
