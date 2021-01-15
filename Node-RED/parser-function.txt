@@ -1,0 +1,40 @@
+var payload = msg.payload_fields;
+payload.dev_id = msg.dev_id;
+payload.datarate = msg.metadata.data_rate;
+payload.frequency = msg.metadata.frequency;
+payload.coding_rate = msg.metadata.coding_rate;
+payload.metadata_time = msg.metadata.time;
+payload.airtime = msg.metadata.airtime;
+payload.counter = msg.counter;
+//payload.time_cloud = msg.metadata.time;
+//var time_cloud = new Date(msg.metadata.time);
+//payload.time = time_cloud.getTime();
+var gateways = msg.metadata.gateways;
+for(var i in gateways) {
+    if(gateways[i].gtw_id !== null && gateways[i].gtw_id !== undefined) {
+        var gtw_id = gateways[i].gtw_id;
+        var gtw_id_reduced = gtw_id.substr(gtw_id.length - 5);
+        payload[gtw_id_reduced+"_gtw_id"] = gateways[i].gtw_id;
+        payload[gtw_id_reduced+"_rssi"] = gateways[i].rssi;
+        //payload[gtw_id_reduced+"_latitude"] = gateways[i].latitude;
+        //payload[gtw_id_reduced+"_longitude"] = gateways[i].longitude;
+        if(gateways[i].time !== null && gateways[i].time !== undefined && gateways[i].time !== "") {
+            payload[gtw_id_reduced+"_time"] = gateways[i].time;
+            var time_gw = new Date(gateways[i].time);
+            payload[gtw_id_reduced+"_time_converted"] = time_gw.getTime();           
+        } else {
+            payload[gtw_id_reduced+"_time_2"] = 0; // Falls keine Altitude gesetzt wurde im Gateway
+            payload[gtw_id_reduced+"_time_converted_2"] = 0;
+        }
+        payload[gtw_id_reduced+"_snr"] = gateways[i].snr;
+        payload[gtw_id_reduced+"_channel"] = gateways[i].channel;
+        //if(gateways[i].altitude !== null && gateways[i].altitude !== undefined) {
+        //    payload[gtw_id_reduced+"_altitude"] = gateways[i].altitude;
+        //} else {
+        //    payload[gtw_id_reduced+"_altitude"] = 0; // Falls keine Altitude gesetzt wurde im Gateway
+        //}
+    }
+}
+return {
+    payload
+};
