@@ -20,11 +20,9 @@ This can all be done with a single small and cheap ESP32 board for less than $20
 
 # Hardware
 
-**Supported ESP32 based boards**:
-
 *LoRa & SPI*:
 
-- TTGO: T1*, T2*, T3*, T-Beam, T-Fox
+- TTGO: T3*
 
 
 
