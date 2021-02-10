@@ -1,10 +1,10 @@
 # ESP32-Paxcounter
 **Wifi & Bluetooth driven, LoRaWAN enabled, battery powered mini Paxcounter built on cheap ESP32 LoRa IoT boards**
-
-<img src="img/pax-device2.jpeg">
-<img src="img/pax-device.jpeg">
-<img src="img/sensor-data.jpeg">
-
+<p float="left">
+<img src="img/pax-device2.jpeg" width="100">
+<img src="img/pax-device.jpeg" width="100">
+<img src="img/sensor-data.jpeg" width="100">
+</p>
 
 # Use case
 
